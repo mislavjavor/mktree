@@ -4,7 +4,7 @@ A simple tool for quick creation of file structures made in Swift
 
 # Usage
 
-![Img](screencap.gif)
+<img src="screencap.gif" alt="Drawing" style="width: 500px;"/>
 
 # Commands
 
