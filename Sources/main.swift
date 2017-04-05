@@ -22,28 +22,30 @@ enum CreationOption {
         let command = input[0]
 
         switch command {
-        case "\\file":
+        case "file":
             guard input.count >= 2 else { self = .invalid; return }
             let name = input[1]
             let content: String
 
             if input.count == 3 {
-                content = input[3]
+                content = input.enumerated().filter { $0.offset >= 3 }
+                            .map { $0.element }
+                            .joined(separator: " ")
             } else {
                 content = ""
             }
 
             self = .file(name: name, content: content)
-        case "\\dir":
+        case "dir":
             guard input.count >= 2 else { self = .invalid; return }
             let name = input[1]
 
             let files = input.enumerated().filter { $0.offset > 1 }.map { $0.element }
 
             self = .directory(name: name, files: files)
-        case "\\up":
+        case "up":
             self = .goUp
-        case "\\end":
+        case "end":
             self = .end
         default: self = .invalid
         }
@@ -78,7 +80,7 @@ do {
     print(error.localizedDescription)
 }
 
-print("{\(generatePath(from: path))} ~command >>", terminator: " ")
+print("{\(generatePath(from: path))} $", terminator: " ")
 
 inputToken = readLine()
 
@@ -121,6 +123,6 @@ while let token = inputToken {
         exit(0)
     }
 
-    print("{\(generatePath(from: path))} ~command >>", terminator: " ")
+    print("{\(generatePath(from: path))} $", terminator: " ")
     inputToken = readLine()
 }
