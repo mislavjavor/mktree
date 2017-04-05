@@ -22,6 +22,7 @@ $ {/Users/mislavjavor/Desktop/MyRootDir/holder} ~command >> \end
 # Commands
 
 `dir` - `\dir <directory-name> <file1> <file2> ... <fileN>`
+
 `file` - `\file <file-name> <file-content>`
 
 # Author
